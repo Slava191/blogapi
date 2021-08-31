@@ -1,0 +1,19 @@
+version: "3.4"
+services:
+  blogapi:
+    image: blogapi
+    restart: always
+    build: .
+    ports:
+      - 3001:3001
+    links:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - data:/data/db
+    ports:
+      - 27017:27017
+
+volumes: 
+  data:
